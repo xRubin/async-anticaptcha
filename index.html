@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Async-anticaptcha by xRubin</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/xRubin/async-anticaptcha">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/xRubin/async-anticaptcha/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/xRubin/async-anticaptcha/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Async-anticaptcha</h1>
+          <p>React asynchronous captcha resolver.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/xRubin">xRubin</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <pre><code>    $dnsResolverFactory = new \React\Dns\Resolver\Factory();
+    $dnsResolver = $dnsResolverFactory-&gt;createCached('8.8.8.8', $this-&gt;loop);
+
+    $factory = new HttpClient\Factory();
+
+    $this-&gt;resolver = new Anticaptcha\Resolver(
+        new Anticaptcha\Service\Antigate(
+            $factory-&gt;create($this-&gt;loop, $dnsResolver), $this-&gt;loop, 'your anticaptcha key'
+        )
+    );
+
+    $this-&gt;resolver-&gt;resolve(
+        new Anticaptcha\Captcha(
+            file_get_contents(__DIR__ . '/../tests/captcha/343111.jpg')
+        )
+    )-&gt;then(function ($code) {
+        var_dump($code);
+    })-&gt;then(null, function (\Exception $e) {
+        var_dump($e-&gt;getMessage());
+    });
+
+
+    $this-&gt;loop-&gt;run();
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
