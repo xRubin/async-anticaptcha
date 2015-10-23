@@ -1,6 +1,9 @@
 # async-anticaptcha
 React asynchronous captcha resolver.
 
+        use React\Anticaptcha;
+        use React\HttpClient;
+
         $this->loop = \React\EventLoop\Factory::create();
 
         $dnsResolverFactory = new \React\Dns\Resolver\Factory();
